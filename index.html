@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>History Timeline v0</title>
+    <title>History Timeline</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="slider-container">
-        <input type="range" min="500" max="2020" value="1500" class="slider" id="yearSlider">
-        <p>Year: <span id="selectedYear">1500</span></p>
+        <div id="yearBubble" class="year-bubble">-500</div>
+        <input type="range" min="-500" max="2023" value="0" class="slider" id="yearSlider">
     </div>
     <div class="timeline-container">
         <ul id="eventsList"></ul>
