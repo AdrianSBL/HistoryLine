@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="search-container">
-        <input type="text" id="yearInput" placeholder="Enter a year...">
-        <button onclick="fetchEvents()">Search</button>
+    <div class="slider-container">
+        <input type="range" min="500" max="2020" value="1500" class="slider" id="yearSlider">
+        <p>Year: <span id="selectedYear">1500</span></p>
     </div>
     <div class="timeline-container">
         <ul id="eventsList"></ul>
