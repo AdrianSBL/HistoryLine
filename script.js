@@ -1,9 +1,12 @@
 document.getElementById('yearSlider').oninput = function() {
-    document.getElementById('selectedYear').textContent = this.value;
+    var bubble = document.getElementById('yearBubble');
+    bubble.textContent = this.value;
+    bubble.style.left = (this.value - this.min) / (this.max - this.min) * 100 + "%";
 }
 
 document.getElementById('yearSlider').onchange = function() {
     fetchEvents(this.value);
+    markYear(this.value);
 }
 
 function fetchEvents(year) {
@@ -21,4 +24,12 @@ function fetchEvents(year) {
             }
         })
         .catch(error => console.error('Error fetching data: ', error));
+}
+
+function markYear(year) {
+    var eventsList = document.getElementById('eventsList');
+    var marker = document.createElement('li');
+    marker.style.listStyleType = "circle";
+    marker.textContent = year + " (selected)";
+    eventsList.appendChild(marker);
 }
