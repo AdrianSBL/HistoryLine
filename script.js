@@ -1,7 +1,13 @@
-function fetchEvents() {
-    var year = document.getElementById('yearInput').value;
-    var url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&prop=extracts&exintro&explaintext&redirects=1&titles=${year}`;
+document.getElementById('yearSlider').oninput = function() {
+    document.getElementById('selectedYear').textContent = this.value;
+}
 
+document.getElementById('yearSlider').onchange = function() {
+    fetchEvents(this.value);
+}
+
+function fetchEvents(year) {
+    var url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&prop=extracts&exintro&explaintext&redirects=1&titles=${year}`;
     fetch(url)
         .then(response => response.json())
         .then(data => {
