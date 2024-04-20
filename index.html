@@ -8,8 +8,12 @@
 </head>
 <body>
     <div class="slider-container">
-        <div id="yearBubble" class="year-bubble">-500</div>
+        <div id="yearBubble" class="year-bubble">0</div>
         <input type="range" min="-500" max="2023" value="0" class="slider" id="yearSlider">
+        <div class="year-limits">
+            <span id="minYear">-500</span>
+            <span id="maxYear">2023</span>
+        </div>
     </div>
     <div class="timeline-container">
         <ul id="eventsList"></ul>
