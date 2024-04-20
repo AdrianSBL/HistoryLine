@@ -1,13 +1,12 @@
-document.getElementById('yearSlider').oninput = function() {
+document.getElementById('yearSlider').addEventListener('input', function() {
     var bubble = document.getElementById('yearBubble');
     bubble.textContent = this.value;
     bubble.style.left = (this.value - this.min) / (this.max - this.min) * 100 + "%";
-}
+});
 
-document.getElementById('yearSlider').onchange = function() {
+document.getElementById('yearSlider').addEventListener('change', function() {
     fetchEvents(this.value);
-    markYear(this.value);
-}
+});
 
 function fetchEvents(year) {
     var url = `https://en.wikipedia.org/w/api.php?origin=*&action=query&format=json&prop=extracts&exintro&explaintext&redirects=1&titles=${year}`;
@@ -19,17 +18,9 @@ function fetchEvents(year) {
             eventsList.innerHTML = ''; // Clear previous results
             for (var key in pages) {
                 var event = document.createElement('li');
-                event.innerHTML = pages[key].extract;
+                event.innerHTML = `<strong>${year}</strong>: ${pages[key].extract} <a href="https://en.wikipedia.org/?curid=${key}" target="_blank">Read more</a>`;
                 eventsList.appendChild(event);
             }
         })
         .catch(error => console.error('Error fetching data: ', error));
-}
-
-function markYear(year) {
-    var eventsList = document.getElementById('eventsList');
-    var marker = document.createElement('li');
-    marker.style.listStyleType = "circle";
-    marker.textContent = year + " (selected)";
-    eventsList.appendChild(marker);
 }
