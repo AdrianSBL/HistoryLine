@@ -45,6 +45,12 @@ body, html {
     cursor: pointer;
 }
 
+.year-limits {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .timeline-container {
     position: absolute;
     top: 30%;
